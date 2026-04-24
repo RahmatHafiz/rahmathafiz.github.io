@@ -301,11 +301,30 @@
 
     <!-- Header Profil -->
     <header class="flex flex-col items-center text-center mb-8 animate-item" style="animation-delay: 0.1s;">
-      <div class="relative mb-4 cursor-pointer">
-        <!-- Tambah width, height, & fetchpriority="high" untuk LCP & CLS Optimization -->
-        <img class="neo-profile w-24 h-24 object-cover rounded-full bg-white" alt="Foto Profil Rahmat Hafiz J."
-          src="assets/profil.jpg" width="96" height="96" fetchpriority="high"
-          onerror="this.src='https://ui-avatars.com/api/?name=Rahmat+Hafiz&background=000&color=fff&size=128'">
+      <!-- Avatar Tipografi Kustom Menggantikan Foto -->
+      <div class="relative mb-6 cursor-pointer group" aria-label="Avatar Rahmat Hafiz J.">
+
+        <!-- Kotak Monogram Brutalist -->
+        <div
+          class="w-28 h-28 flex items-center justify-center bg-white border-[3px] border-black shadow-[8px_8px_0px_0px_#000] group-hover:shadow-[0px_0px_0px_0px_#000] group-hover:translate-x-[8px] group-hover:translate-y-[8px] transition-all duration-200 ease-out relative overflow-hidden">
+
+          <!-- Efek pattern garis diagonal yang muncul saat di-hover -->
+          <div
+            class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
+            style="background-image: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 8px);">
+          </div>
+
+          <!-- Teks Inisial dengan kursor berkedip -->
+          <div class="font-primary font-bold text-5xl text-black z-10 flex items-end tracking-tighter">
+            RH<span class="animate-pulse text-4xl mb-1 ml-0.5">_</span>
+          </div>
+        </div>
+
+        <!-- Dekorasi Lencana (Badge) Melayang -->
+        <div
+          class="absolute -top-3 -right-4 bg-black text-white text-[10px] font-mono font-bold px-2 py-0.5 border-2 border-white transform rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 pointer-events-none shadow-sm">
+          SYS.ONLINE
+        </div>
       </div>
 
       <h1 class="text-2xl font-primary font-bold tracking-tight mb-1.5 glitch-hover cursor-help">Rahmat Hafiz J.</h1>
@@ -337,38 +356,6 @@
       <i data-lucide="check" class="w-3 h-3"></i>
     </div>
     <span id="toast-text">Tautan profil disalin!</span>
-  </div>
-
-  <!-- FAB WhatsApp -->
-  <div class="fixed bottom-6 right-4 md:right-6 z-50">
-    <!-- WA Chat Box -->
-    <div id="wa-chatbox" role="dialog" aria-label="Kotak Pesan WhatsApp" aria-hidden="true"
-      class="hidden absolute bottom-16 right-0 w-[280px] bg-white border-2 border-black shadow-[6px_6px_0px_#000] p-4 flex flex-col gap-3 rounded-lg transition-all">
-      <div class="flex justify-between items-center border-b-2 border-black pb-2">
-        <div class="flex items-center gap-2" aria-hidden="true">
-          <i data-lucide="message-circle" class="w-5 h-5 text-black"></i>
-          <span class="font-primary font-bold text-sm">Hubungi Saya</span>
-        </div>
-        <button onclick="toggleWaChat()"
-          class="hover:bg-black hover:text-white border-2 border-transparent hover:border-black rounded p-0.5 transition-colors focus-visible:ring-2 focus-visible:ring-black focus-visible:outline-none"
-          aria-label="Tutup Obrolan"><i data-lucide="x" class="w-4 h-4"></i></button>
-      </div>
-      <label for="wa-msg" class="sr-only">Tulis pesan Anda</label>
-      <textarea id="wa-msg" rows="3"
-        class="w-full border-2 border-black p-2 text-sm font-mono resize-none focus:outline-none focus:ring-2 focus:ring-black"
-        placeholder="Halo Rahmat, mari berdiskusi..."></textarea>
-      <button onclick="sendWa()"
-        class="neo-btn px-4 py-2 bg-black text-white hover:bg-white hover:text-black text-sm font-bold w-full flex justify-center items-center gap-2 focus-visible:ring-2 focus-visible:ring-black focus-visible:outline-none">
-        <i data-lucide="send" aria-hidden="true" class="w-4 h-4"></i> Kirim via WA
-      </button>
-    </div>
-
-    <!-- FAB Button -->
-    <button onclick="toggleWaChat()" aria-expanded="false" aria-controls="wa-chatbox"
-      class="neo-btn p-3 rounded-full bg-white text-black hover:bg-black hover:text-white flex items-center justify-center group focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:outline-none"
-      aria-label="Buka Chat WhatsApp">
-      <i data-lucide="message-circle" aria-hidden="true" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
-    </button>
   </div>
 
   <!-- Script Utama -->
@@ -419,7 +406,7 @@
       },
       {
         section: "Digital Universe",
-        layout: "grid-square",
+        layout: "list",
         items: [
           { title: "Web Portofolio", url: "https://rahmathafiz.xyz/", icon: "terminal", subtitle: "My digital playground & codes" },
           { title: "Business / Startup", url: "#", icon: "rocket", subtitle: "My entrepreneurial journey" },
@@ -467,27 +454,6 @@
                                     </div>
                                 </a>
                                 <div class="absolute inset-0 bg-gray-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
-                            </div>
-                        `;
-          });
-          htmlContent += `</div>`;
-        } else if (category.layout === 'grid-square') {
-          htmlContent += `<div class="flex flex-wrap justify-center gap-3">`;
-          category.items.forEach((link) => {
-            animationDelay += 0.1;
-            htmlContent += `
-                            <div class="neo-card flex flex-col items-center justify-center p-3 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center w-[calc(50%-6px)] aspect-square"
-                               style="animation-delay: ${animationDelay}s;">
-                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center justify-center z-10 w-full h-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
-                                    <div class="flex items-center justify-center w-12 h-12 mb-3 rounded-lg border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
-                                        ${link.customSvg ? link.customSvg : `<i data-lucide="${link.icon}" aria-hidden="true" class="w-6 h-6"></i>`}
-                                    </div>
-                                    <div class="pointer-events-none px-1">
-                                        <h3 class="text-[14px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
-                                        ${link.subtitle ? `<p class="text-gray-800 text-[11px] font-mono mt-1.5 leading-tight">${link.subtitle}</p>` : ''}
-                                    </div>
-                                </a>
-                                <div class="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
                             </div>
                         `;
           });
@@ -550,33 +516,6 @@
           console.error('Gagal menyalin:', err);
         }
         document.body.removeChild(tempInput);
-      }
-    }
-
-    // WA Toggle & Send
-    function toggleWaChat() {
-      const chatbox = document.getElementById('wa-chatbox');
-      const btn = document.querySelector('[aria-controls="wa-chatbox"]');
-      const isHidden = chatbox.classList.contains('hidden');
-
-      if (isHidden) {
-        chatbox.classList.remove('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-        // Mengatur fokus ke textarea saat dibuka untuk aksesibilitas (A11y)
-        setTimeout(() => document.getElementById('wa-msg').focus(), 100);
-      } else {
-        chatbox.classList.add('hidden');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    }
-
-    function sendWa() {
-      const msg = document.getElementById('wa-msg').value;
-      const phone = '6285365557009';
-      if (msg.trim() !== '') {
-        window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
-        toggleWaChat();
-        document.getElementById('wa-msg').value = '';
       }
     }
 
