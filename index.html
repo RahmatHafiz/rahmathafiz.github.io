@@ -1,162 +1,493 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="id" dir="ltr">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Astro v1.2.3">
-  <title>Rahmat Hafiz J.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Rahmat Hafiz J. | Links</title>
   <meta name="description" content="Rahmat Hafiz J., Front-End Developer">
 
   <!-- OpenGraph Tags -->
   <meta property="og:title" content="Rahmat Hafiz J.">
   <meta property="og:description" content="Front-End Developer">
   <meta property="og:url" content="https://rahmathafiz.xyz/">
-  <meta property="og:site_name" content="LinkedIn">
-  <meta property="article:publisher" content="https://www.linkedin.com/in/rahmathafizj/">
-  <meta property="article:author" content="https://www.linkedin.com/in/rahmathafizj/">
-  <meta property="og:site_name" content="GitHub">
-  <meta property="article:publisher" content="https://github.com/RahmatHafiz">
-  <meta property="article:author" content="https://github.com/RahmatHafiz">
 
-  <!-- Twitter Card Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@rahmathafiz">
-  <meta name="twitter:creator" content="@rahmathafiz">
+  <!-- Google Fonts: Josefin Sans & Lato -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lato:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
 
-  <!-- Stylesheet and Favicon -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Vanilla Tilt untuk efek 3D saat disorot -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+  <!-- Konfigurasi Tailwind Kustom -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            primary: ['"Josefin Sans"', 'sans-serif'],
+            body: ['Lato', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(40px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      overflow-x: hidden;
+      background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+      background-size: 30px 30px;
+      cursor: crosshair;
+      transition: background-position 0.1s ease-out;
+    }
+
+    .animate-item {
+      opacity: 0;
+    }
+
+    /* PERBAIKAN DI SINI: Menggunakan left dan top alih-alih transform untuk sistem Drag */
+    .neo-card {
+      border: 2px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
+      background-color: #ffffff;
+      transition: box-shadow 0.2s, transform 0.2s, background-color 0.2s;
+      position: relative;
+      /* Harus relative agar left & top berfungsi */
+      left: var(--drag-x, 0px);
+      top: var(--drag-y, 0px);
+      z-index: 10;
+      touch-action: none;
+    }
+
+    .neo-card:hover {
+      box-shadow: 6px 6px 0px 0px #000000;
+      transform: translate(-2px, -2px);
+    }
+
+    .neo-card:active {
+      box-shadow: 0px 0px 0px 0px #000000;
+      transform: translate(4px, 4px);
+    }
+
+    .neo-card.is-dragging {
+      transition: none !important;
+      transform: rotate(3deg) scale(1.02) !important;
+      box-shadow: 10px 10px 0px 0px #000000 !important;
+      z-index: 50 !important;
+      cursor: grabbing !important;
+    }
+
+    .neo-btn {
+      border: 2px solid #000000;
+      background: #ffffff;
+      box-shadow: 3px 3px 0px #000000;
+      transition: all 0.2s ease;
+    }
+
+    .neo-btn:hover {
+      background: #000000;
+      color: #ffffff;
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0px #000000;
+    }
+
+    .neo-btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0px 0px 0px #000000;
+    }
+
+    .neo-profile {
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px #000000;
+      filter: grayscale(100%) contrast(1.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .neo-profile:hover {
+      filter: grayscale(0%) contrast(1);
+      transform: rotate(-5deg) scale(1.05);
+      box-shadow: 10px 10px 0px #000000;
+    }
+
+    .floating-shape {
+      position: absolute;
+      border: 2px solid #000000;
+      pointer-events: none;
+      z-index: -1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(15deg);
+      }
+    }
+
+    #toast {
+      border: 2px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 
+<body
+  class="min-h-screen font-body antialiased flex flex-col items-center pb-12 relative selection:bg-black selection:text-white">
 
+  <!-- Dekorasi Background Melayang -->
+  <div class="floating-shape bg-white hidden md:block"
+    style="width: 50px; height: 50px; top: 12%; left: 8%; border-radius: 12px;"></div>
+  <div class="floating-shape bg-black hidden md:block"
+    style="width: 25px; height: 25px; top: 55%; right: 10%; border-radius: 50%; animation-delay: -2s;"></div>
+  <div class="floating-shape bg-white hidden md:block"
+    style="width: 35px; height: 35px; top: 75%; left: 6%; transform: rotate(45deg); animation-delay: -4s;"></div>
 
-<body class="bg-zinc-900 h-screen text-white overflow-x-hidden">
+  <!-- Tombol Share -->
+  <button onclick="copyProfileLink()"
+    class="neo-btn absolute top-4 right-4 p-2.5 rounded-full z-10 flex items-center justify-center group"
+    aria-label="Bagikan Profil">
+    <i data-lucide="share-2" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+  </button>
 
-  <main class="max-w-sm mx-auto pt-12 p-8 relative">
+  <main class="w-full max-w-sm mx-auto pt-14 px-4 relative z-0">
 
-    <header class="flex justify-center flex-col items-center text-center mb-10">
-      <img class="rounded-full mb-6 astro-UXNKDZ4E" alt="Rahmat Hafiz J., Profile picture" width="96" height="96"
-        src="assets/profil.jpg" loading="lazy" decoding="async">
-      <h1 class="text-3xl font-bold">Rahmat Hafiz J.</h1>
-      <p class="text-neutral-300">Front-End Developer</p>
+    <!-- Header Profil -->
+    <header class="flex flex-col items-center text-center mb-8 animate-item" style="animation-delay: 0.1s;">
+      <div class="relative mb-4 cursor-pointer">
+        <img class="neo-profile w-24 h-24 object-cover rounded-full bg-white" alt="Rahmat Hafiz J."
+          src="assets/profil.jpg"
+          onerror="this.src='https://ui-avatars.com/api/?name=Rahmat+Hafiz&background=000&color=fff&size=128'">
+      </div>
+      <h1 class="text-2xl font-primary font-bold tracking-tight mb-1.5">Rahmat Hafiz J.</h1>
+      <p
+        class="font-mono text-[11px] font-bold tracking-widest uppercase bg-black text-white px-2.5 py-1 inline-block -skew-x-6">
+        Front-End Developer</p>
     </header>
 
-    <section class="mb-12">
-      <h2 class="mb-4 text-center text-3xl">Personal</h2>
-      <div class="flex flex-col gap-4">
-        <a href="https://rahmathafiz.xyz/" target="_blank"
-          class="border border-neutral-500 px-2 py-2 w-full block rounded-lg text-center font-primary text-xl hover:bg-cyan-900/20 hover:text-white">
-          Portofolio
-        </a>
+    <!-- Container untuk Tautan -->
+    <div id="links-container" class="flex flex-col gap-6">
+      <!-- Konten akan diisi oleh JavaScript -->
+    </div>
 
-        <a href="#"
-          class="border border-neutral-500 px-2 py-2 w-full block rounded-lg text-center font-primary text-xl hover:bg-cyan-900/20 hover:text-white">
-          Blog
-        </a>
-      </div>
-    </section>
-
-    <section class="mb-12">
-      <h2 class="mb-4 text-center text-3xl">Social</h2>
-      <div class="flex flex-col gap-4">
-        <a href="https://twitter.com/rahmathafiz" target="_blank">
-          <div
-            class="flex flex-row py-2 px-4 items-center border-neutral-500 border rounded-lg hover:bg-cyan-900/20 cursor-pointer">
-            <div>
-              <img alt="Twitter" width="32" height="32" src="assets/icons8-twitter.svg" class="astro-UXNKDZ4E"
-                loading="lazy" decoding="async">
-            </div>
-            <div class="flex-1 px-4">
-              <h2 class="text-xl font-bold -mb-2">Twitter</h2>
-              <p class="text-neutral-300">386 followers</p>
-            </div>
-            <div>
-              <img alt="Next" width="24" height="24" src="assets/arrow.jpg" class="astro-UXNKDZ4E" loading="lazy"
-                decoding="async">
-            </div>
-          </div>
-        </a>
-
-        <a href="https://www.instagram.com/rahmathafiz/" target="_blank">
-          <div
-            class="flex flex-row py-2 px-4 items-center border-neutral-500 border rounded-lg hover:bg-cyan-900/20 cursor-pointer">
-            <div>
-              <img alt="Instagram" width="32" height="32" src="assets/icons8-instagram.svg" class="astro-UXNKDZ4E"
-                loading="lazy" decoding="async">
-            </div>
-            <div class="flex-1 px-4">
-              <h2 class="text-xl font-bold -mb-2">Instagram</h2>
-              <p class="text-neutral-300">922 followers</p>
-            </div>
-            <div>
-              <img alt="Next" width="24" height="24" src="assets/arrow.jpg" class="astro-UXNKDZ4E" loading="lazy"
-                decoding="async">
-            </div>
-          </div>
-        </a>
-
-        <a href="https://www.linkedin.com/in/rahmathafizj/" target="_blank">
-          <div
-            class="flex flex-row py-2 px-4 items-center border-neutral-500 border rounded-lg hover:bg-cyan-900/20 cursor-pointer">
-            <div>
-              <img alt="LinkedIn" width="32" height="32" src="assets/icons8-linkedin.svg" class="astro-UXNKDZ4E"
-                loading="lazy" decoding="async">
-            </div>
-            <div class="flex-1 px-4">
-              <h2 class="text-xl font-bold -mb-2">LinkedIn</h2>
-              <p class="text-neutral-300">552 followers</p>
-            </div>
-            <div>
-              <img alt="Next" width="24" height="24" src="assets/arrow.jpg" class="astro-UXNKDZ4E" loading="lazy"
-                decoding="async">
-            </div>
-          </div>
-        </a>
-
-        <a href="https://github.com/RahmatHafiz" target="_blank">
-          <div
-            class="flex flex-row py-2 px-4 items-center border-neutral-500 border rounded-lg hover:bg-cyan-900/20 cursor-pointer">
-            <div>
-              <img alt="GitHub" width="32" height="32" src="assets/icons8-github.svg" class="astro-UXNKDZ4E"
-                loading="lazy" decoding="async">
-            </div>
-            <div class="flex-1 px-4">
-              <h2 class="text-xl font-bold -mb-2">GitHub</h2>
-              <p class="text-neutral-300">10 followers</p>
-            </div>
-            <div>
-              <img alt="Next" width="24" height="24" src="assets/arrow.jpg" class="astro-UXNKDZ4E" loading="lazy"
-                decoding="async">
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="mb-12">
-      <h2 class="mb-4 text-center text-3xl">Service</h2>
-      <div class="flex flex-row gap-4">
-        <a target="_blank" href="https://www.upwork.com/freelancers/~01d25e5013fac2bf3b"
-          class="border border-neutral-500 px-2 py-2 w-full block rounded-lg text-center font-primary text-xl hover:bg-cyan-900/20 hover:text-white flex items-center justify-between transition-transform transform hover:scale-105">
-          <div class="flex items-center">
-            <img alt="Upwork" width="32" height="32" src="assets/upwork-1.svg" class="astro-UXNKDZ4E" loading="lazy"
-              decoding="async">
-            <span class="text-lg font-semibold jarak">Upwork</span>
-          </div>
-        </a>
-
-        <a href="#"
-          class="border border-neutral-500 px-2 py-2 w-full block rounded-lg text-center font-primary text-xl hover:bg-cyan-900/20 hover:text-white flex items-center justify-between transition-transform transform hover:scale-105">
-          <div class="flex items-center">
-            <img alt="Coming Soon" width="32" height="32" src="assets/warning.png" class="astro-UXNKDZ4E" loading="lazy"
-              decoding="async">
-            <span class="text-lg font-semibold">Coming Soon</span>
-          </div>
-        </a>
-      </div>
-    </section>
   </main>
+
+  <!-- Elemen Toast Notifikasi -->
+  <div id="toast"
+    class="fixed bottom-6 px-5 py-2.5 rounded-lg font-primary font-bold text-sm flex items-center gap-2 z-50">
+    <div class="bg-black text-white rounded-full p-1">
+      <i data-lucide="check" class="w-3 h-3"></i>
+    </div>
+    <span>Tautan disalin!</span>
+  </div>
+
+  <!-- Script Utama -->
+  <script>
+    const linkData = [
+      {
+        section: "Portofolio & Works",
+        layout: "list",
+        items: [
+          { title: "Portofolio Website", url: "https://rahmathafiz.xyz/", icon: "globe", subtitle: "My digital playground" },
+          { title: "Upwork", url: "https://www.upwork.com/freelancers/~01d25e5013fac2bf3b", icon: "briefcase", subtitle: "Hire me for projects" }
+        ]
+      },
+      {
+        section: "Social Media",
+        layout: "grid",
+        items: [
+          { title: "Instagram", url: "https://www.instagram.com/rahmathafiz/", icon: "instagram", subtitle: "@rahmathafiz" },
+          { title: "Facebook", url: "#", icon: "facebook", subtitle: "Rahmat Hafiz" },
+          { title: "Threads", url: "#", icon: "at-sign", subtitle: "@rahmathafiz" },
+          { title: "X", url: "https://twitter.com/rahmathafiz", icon: "twitter", subtitle: "@rahmathafiz" },
+          { title: "TikTok", url: "#", icon: "music", subtitle: "@rahmathafiz" },
+          { title: "LinkedIn", url: "https://www.linkedin.com/in/rahmathafizj/", icon: "linkedin", subtitle: "Rahmat Hafiz J." }
+        ]
+      }
+    ];
+
+    function renderLinks() {
+      const container = document.getElementById('links-container');
+      let htmlContent = '';
+      let animationDelay = 0.2;
+
+      linkData.forEach((category) => {
+        htmlContent += `
+                    <section class="animate-item relative" style="animation-delay: ${animationDelay}s;">
+                        <h2 class="mb-3.5 text-center text-sm font-primary font-bold tracking-[0.2em] uppercase">
+                            <span class="bg-white px-3 border-2 border-black inline-block py-0.5 shadow-[3px_3px_0px_#000] -skew-x-6">
+                                ${category.section}
+                            </span>
+                        </h2>
+                `;
+
+        if (category.layout === 'grid') {
+          htmlContent += `<div class="grid grid-cols-2 gap-3">`;
+          category.items.forEach((link) => {
+            animationDelay += 0.1;
+            htmlContent += `
+                            <div class="neo-card flex flex-col items-center justify-center p-3.5 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center"
+                               style="animation-delay: ${animationDelay}s;">
+                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center z-10 w-full outline-none select-none">
+                                    <div class="flex items-center justify-center w-10 h-10 mb-2 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
+                                        <i data-lucide="${link.icon}" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="pointer-events-none">
+                                        <h3 class="text-[13px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
+                                        ${link.subtitle ? `<p class="text-gray-600 text-[9px] font-mono mt-1">${link.subtitle}</p>` : ''}
+                                    </div>
+                                </a>
+                                <div class="absolute inset-0 bg-gray-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
+                            </div>
+                        `;
+          });
+          htmlContent += `</div>`;
+        } else {
+          htmlContent += `<div class="flex flex-col gap-3">`;
+          category.items.forEach((link) => {
+            animationDelay += 0.1;
+            htmlContent += `
+                            <div class="neo-card flex items-center p-2.5 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing"
+                               style="animation-delay: ${animationDelay}s;">
+                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex items-center flex-1 z-10 w-full outline-none select-none">
+                                    <div class="flex items-center justify-center w-10 h-10 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
+                                        <i data-lucide="${link.icon}" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="flex-1 px-3 text-left pointer-events-none">
+                                        <h3 class="text-[15px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
+                                        ${link.subtitle ? `<p class="text-gray-600 text-[10px] font-mono mt-0.5">${link.subtitle}</p>` : ''}
+                                    </div>
+                                    <div class="w-7 h-7 flex items-center justify-center border-2 border-transparent rounded-full group-hover:border-black group-hover:translate-x-1 group-hover:-rotate-45 transition-all duration-300 pointer-events-none">
+                                        <i data-lucide="arrow-right" class="w-4 h-4 text-black"></i>
+                                    </div>
+                                </a>
+                                <div class="absolute inset-0 bg-gray-100 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
+                            </div>
+                        `;
+          });
+          htmlContent += `</div>`;
+        }
+        htmlContent += `</section>`;
+      });
+      container.innerHTML = htmlContent;
+    }
+
+    function copyProfileLink() {
+      const url = window.location.href;
+      const tempInput = document.createElement('textarea');
+      tempInput.value = url;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+    function createParticles(x, y) {
+      const colors = ['#000000', '#555555', '#cccccc'];
+      for (let i = 0; i < 10; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'fixed pointer-events-none z-50';
+        const size = Math.random() * 6 + 3;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        if (Math.random() > 0.5) particle.style.borderRadius = '50%';
+
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        document.body.appendChild(particle);
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 50 + 20;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+
+        particle.animate([
+          { transform: 'translate(-50%, -50%) scale(1) rotate(0deg)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(0) rotate(${Math.random() * 180}deg)`, opacity: 0 }
+        ], {
+          duration: 400 + Math.random() * 300,
+          easing: 'cubic-bezier(0, .9, .57, 1)'
+        }).onfinish = () => particle.remove();
+      }
+    }
+
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        document.body.style.backgroundPosition = `${x}px ${y}px`;
+      });
+    }
+
+    let isDragging = false;
+    let dragCard = null;
+    let startX = 0, startY = 0;
+    let initialDragX = 0, initialDragY = 0;
+    let zIndexCounter = 10;
+    let hasDragged = false;
+    let dragThreshold = 5;
+
+    function initFreeDrag() {
+      const cards = document.querySelectorAll('.neo-card');
+
+      cards.forEach(card => {
+        const startDrag = (e) => {
+          isDragging = true;
+          dragCard = card;
+          hasDragged = false;
+
+          zIndexCounter++;
+          dragCard.style.zIndex = zIndexCounter;
+
+          const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+          const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+
+          startX = clientX;
+          startY = clientY;
+
+          // Mengambil nilai koordinat langsung dari inline style agar lebih akurat
+          const currentX = parseFloat(dragCard.style.getPropertyValue('--drag-x')) || 0;
+          const currentY = parseFloat(dragCard.style.getPropertyValue('--drag-y')) || 0;
+
+          initialDragX = currentX;
+          initialDragY = currentY;
+
+          dragCard.classList.add('is-dragging');
+          if (navigator.vibrate) navigator.vibrate(10);
+        };
+
+        card.addEventListener('mousedown', startDrag);
+        card.addEventListener('touchstart', startDrag, { passive: false });
+
+        card.addEventListener('click', (e) => {
+          if (hasDragged) {
+            e.preventDefault();
+          } else {
+            createParticles(e.clientX, e.clientY);
+          }
+        });
+      });
+
+      const onDrag = (e) => {
+        if (!isDragging || !dragCard) return;
+
+        const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+
+        if (Math.abs(dx) > dragThreshold || Math.abs(dy) > dragThreshold) {
+          hasDragged = true;
+          e.preventDefault();
+        }
+
+        const newX = initialDragX + dx;
+        const newY = initialDragY + dy;
+
+        dragCard.style.setProperty('--drag-x', `${newX}px`);
+        dragCard.style.setProperty('--drag-y', `${newY}px`);
+      };
+
+      const stopDrag = (e) => {
+        if (!isDragging || !dragCard) return;
+        isDragging = false;
+        dragCard.classList.remove('is-dragging');
+
+        if (hasDragged) {
+          if (navigator.vibrate) navigator.vibrate(10);
+          const clientX = e.type.includes('mouse') ? e.clientX : (e.changedTouches ? e.changedTouches[0].clientX : 0);
+          const clientY = e.type.includes('mouse') ? e.clientY : (e.changedTouches ? e.changedTouches[0].clientY : 0);
+          if (clientX && clientY) createParticles(clientX, clientY);
+        }
+
+        dragCard = null;
+      };
+
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('touchmove', onDrag, { passive: false });
+      document.addEventListener('mouseup', stopDrag);
+      document.addEventListener('touchend', stopDrag);
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.neo-card') && !e.target.closest('.neo-btn')) {
+        createParticles(e.clientX, e.clientY);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLinks();
+      lucide.createIcons();
+
+      const animateItems = document.querySelectorAll('.animate-item');
+      animateItems.forEach(item => {
+        item.classList.add('animate-fade-in-up');
+
+        // Hapus animasi setelah selesai untuk membersihkan potensi interupsi transform
+        item.addEventListener('animationend', () => {
+          item.classList.remove('animate-fade-in-up', 'animate-item');
+        });
+      });
+
+      initFreeDrag();
+
+      // Efek Vanilla-Tilt akan tetap berjalan, tapi sekarang tidak lagi menimpa koordinat posisi geser
+      if (window.matchMedia("(min-width: 768px)").matches) {
+        VanillaTilt.init(document.querySelectorAll(".neo-card"), {
+          max: 5,
+          speed: 400,
+          glare: true,
+          "max-glare": 0.1,
+          scale: 1.02
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
