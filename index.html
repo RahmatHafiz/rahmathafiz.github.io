@@ -4,29 +4,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Rahmat Hafiz J. | Links</title>
-  <meta name="description" content="Rahmat Hafiz J., Front-End Developer">
+  <meta name="theme-color" content="#ffffff">
 
-  <!-- OpenGraph Tags -->
-  <meta property="og:title" content="Rahmat Hafiz J.">
-  <meta property="og:description" content="Front-End Developer">
-  <meta property="og:url" content="https://rahmathafiz.xyz/">
-
-  <!-- Google Fonts: Josefin Sans & Lato -->
+  <!-- === PRECONNECT & PERFORMANCE OPTIMIZATION === -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+
+  <!-- === SEO & META TAGS === -->
+  <title>Rahmat Hafiz J. | Links</title>
+  <meta name="description"
+    content="Kumpulan tautan sosial dan portofolio Rahmat Hafiz J., seorang Front-End Developer, Tech Entrepreneur, dan Drone Pilot. Mari terhubung!">
+  <meta name="keywords"
+    content="Rahmat Hafiz, Front-End Developer, Web Developer, Tech Entrepreneur, Drone Pilot, Portofolio, Linktree">
+  <meta name="author" content="Rahmat Hafiz J.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rahmathafiz.xyz/">
+
+  <!-- OpenGraph Tags (Untuk Preview Sosmed/WhatsApp) -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Rahmat Hafiz J. | Links">
+  <meta property="og:description"
+    content="Front-End Developer, Tech Entrepreneur, & Drone Pilot. Lihat portofolio dan mari terhubung!">
+  <meta property="og:url" content="https://rahmathafiz.xyz/">
+  <meta property="og:image" content="assets/profil.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rahmat Hafiz J. | Links">
+  <meta name="twitter:description" content="Front-End Developer, Tech Entrepreneur, & Drone Pilot.">
+  <meta name="twitter:image" content="assets/profil.jpg">
+
+  <!-- Schema Markup JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Rahmat Hafiz J.",
+        "jobTitle": "Front-End Developer",
+        "url": "https://rahmathafiz.xyz/",
+        "sameAs": [
+          "https://www.instagram.com/rahmathafiz/",
+          "https://twitter.com/rahmathafiz",
+          "https://www.linkedin.com/in/rahmathafizj/",
+          "https://www.tiktok.com/@rahmathafizj",
+          "https://www.threads.net/@rahmathafiz"
+        ],
+        "image": "assets/profil.jpg"
+      }
+    }
+    </script>
+  <!-- === END SEO === -->
+
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lato:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
 
-  <!-- Tailwind CSS (CDN) -->
+  <!-- Tailwind CSS (Synchronous agar tidak ada FOUC) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Lucide Icons (CDN) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Vanilla Tilt untuk efek 3D saat disorot -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+  <!-- Lucide Icons & Vanilla Tilt (Deferred) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
 
   <!-- Konfigurasi Tailwind Kustom -->
   <script>
@@ -69,14 +112,13 @@
       opacity: 0;
     }
 
-    /* PERBAIKAN DI SINI: Menggunakan left dan top alih-alih transform untuk sistem Drag */
+    /* Drag System */
     .neo-card {
       border: 2px solid #000000;
       box-shadow: 4px 4px 0px 0px #000000;
       background-color: #ffffff;
       transition: box-shadow 0.2s, transform 0.2s, background-color 0.2s;
       position: relative;
-      /* Harus relative agar left & top berfungsi */
       left: var(--drag-x, 0px);
       top: var(--drag-y, 0px);
       z-index: 10;
@@ -153,20 +195,83 @@
       }
     }
 
+    /* Custom Cursor Follower */
+    .cursor-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      border: 2px solid #000;
+      background: transparent;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s, border-radius 0.2s;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-box.hovering {
+      width: 45px;
+      height: 45px;
+      background: #fff;
+      border-radius: 50%;
+      mix-blend-mode: difference;
+    }
+
+    /* Efek Glitch Teks pada Nama */
+    .glitch-hover {
+      display: inline-block;
+    }
+
+    .glitch-hover:hover {
+      animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      color: transparent;
+      text-shadow: 2px 2px 0px #000, -2px -2px 0px #aaa;
+    }
+
+    @keyframes glitch-skew {
+      0% {
+        transform: skew(0deg) translate(0);
+      }
+
+      20% {
+        transform: skew(-10deg) translate(-2px, 1px);
+      }
+
+      40% {
+        transform: skew(10deg) translate(2px, -1px);
+      }
+
+      60% {
+        transform: skew(-5deg) translate(-1px, 2px);
+      }
+
+      80% {
+        transform: skew(5deg) translate(1px, -2px);
+      }
+
+      100% {
+        transform: skew(0deg) translate(0);
+      }
+    }
+
+    /* Toast Notifikasi */
     #toast {
       border: 2px solid #000000;
       box-shadow: 4px 4px 0px 0px #000000;
       transition: opacity 0.3s ease, transform 0.3s ease;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translate(-50%, 20px);
       pointer-events: none;
       background: #ffffff;
       color: #000000;
+      left: 50%;
     }
 
     #toast.show {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
     }
   </style>
 </head>
@@ -174,19 +279,22 @@
 <body
   class="min-h-screen font-body antialiased flex flex-col items-center pb-12 relative selection:bg-black selection:text-white">
 
+  <!-- Custom Cursor (Hanya aktif di Desktop) -->
+  <div class="cursor-box hidden md:block" id="cursor-follower" aria-hidden="true"></div>
+
   <!-- Dekorasi Background Melayang -->
-  <div class="floating-shape bg-white hidden md:block"
+  <div class="floating-shape dodge-shape bg-white" aria-hidden="true"
     style="width: 50px; height: 50px; top: 12%; left: 8%; border-radius: 12px;"></div>
-  <div class="floating-shape bg-black hidden md:block"
+  <div class="floating-shape dodge-shape bg-black" aria-hidden="true"
     style="width: 25px; height: 25px; top: 55%; right: 10%; border-radius: 50%; animation-delay: -2s;"></div>
-  <div class="floating-shape bg-white hidden md:block"
+  <div class="floating-shape dodge-shape bg-white" aria-hidden="true"
     style="width: 35px; height: 35px; top: 75%; left: 6%; transform: rotate(45deg); animation-delay: -4s;"></div>
 
   <!-- Tombol Share -->
   <button onclick="copyProfileLink()"
-    class="neo-btn absolute top-4 right-4 p-2.5 rounded-full z-10 flex items-center justify-center group"
-    aria-label="Bagikan Profil">
-    <i data-lucide="share-2" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+    class="neo-btn absolute top-4 right-4 p-2.5 rounded-full z-10 flex items-center justify-center group focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:outline-none"
+    aria-label="Bagikan Tautan Profil">
+    <i data-lucide="share-2" aria-hidden="true" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
   </button>
 
   <main class="w-full max-w-sm mx-auto pt-14 px-4 relative z-0">
@@ -194,57 +302,139 @@
     <!-- Header Profil -->
     <header class="flex flex-col items-center text-center mb-8 animate-item" style="animation-delay: 0.1s;">
       <div class="relative mb-4 cursor-pointer">
-        <img class="neo-profile w-24 h-24 object-cover rounded-full bg-white" alt="Rahmat Hafiz J."
-          src="assets/profil.jpg"
+        <!-- Tambah width, height, & fetchpriority="high" untuk LCP & CLS Optimization -->
+        <img class="neo-profile w-24 h-24 object-cover rounded-full bg-white" alt="Foto Profil Rahmat Hafiz J."
+          src="assets/profil.jpg" width="96" height="96" fetchpriority="high"
           onerror="this.src='https://ui-avatars.com/api/?name=Rahmat+Hafiz&background=000&color=fff&size=128'">
       </div>
-      <h1 class="text-2xl font-primary font-bold tracking-tight mb-1.5">Rahmat Hafiz J.</h1>
-      <p
-        class="font-mono text-[11px] font-bold tracking-widest uppercase bg-black text-white px-2.5 py-1 inline-block -skew-x-6">
-        Front-End Developer</p>
+
+      <h1 class="text-2xl font-primary font-bold tracking-tight mb-1.5 glitch-hover cursor-help">Rahmat Hafiz J.</h1>
+
+      <!-- Lencana Identitas Unik -->
+      <div class="flex flex-wrap justify-center gap-2 mt-2" aria-label="Keahlian">
+        <span
+          class="font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-black bg-white text-black px-2 py-0.5 shadow-[2px_2px_0px_#000] -skew-x-6 hover:-translate-y-1 transition-transform cursor-default">Web
+          Dev</span>
+        <span
+          class="font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-black bg-black text-white px-2 py-0.5 shadow-[2px_2px_0px_#ccc] skew-x-6 hover:-translate-y-1 transition-transform cursor-default">Entrepreneur</span>
+        <span
+          class="font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-black bg-white text-black px-2 py-0.5 shadow-[2px_2px_0px_#000] -skew-x-6 hover:-translate-y-1 transition-transform cursor-default">Drone
+          Pilot</span>
+      </div>
     </header>
 
     <!-- Container untuk Tautan -->
-    <div id="links-container" class="flex flex-col gap-6">
+    <nav id="links-container" class="flex flex-col gap-6" aria-label="Tautan Utama">
       <!-- Konten akan diisi oleh JavaScript -->
-    </div>
+    </nav>
 
   </main>
 
   <!-- Elemen Toast Notifikasi -->
-  <div id="toast"
+  <div id="toast" role="alert" aria-live="polite"
     class="fixed bottom-6 px-5 py-2.5 rounded-lg font-primary font-bold text-sm flex items-center gap-2 z-50">
-    <div class="bg-black text-white rounded-full p-1">
+    <div class="bg-black text-white rounded-full p-1" aria-hidden="true">
       <i data-lucide="check" class="w-3 h-3"></i>
     </div>
-    <span>Tautan disalin!</span>
+    <span id="toast-text">Tautan profil disalin!</span>
+  </div>
+
+  <!-- FAB WhatsApp -->
+  <div class="fixed bottom-6 right-4 md:right-6 z-50">
+    <!-- WA Chat Box -->
+    <div id="wa-chatbox" role="dialog" aria-label="Kotak Pesan WhatsApp" aria-hidden="true"
+      class="hidden absolute bottom-16 right-0 w-[280px] bg-white border-2 border-black shadow-[6px_6px_0px_#000] p-4 flex flex-col gap-3 rounded-lg transition-all">
+      <div class="flex justify-between items-center border-b-2 border-black pb-2">
+        <div class="flex items-center gap-2" aria-hidden="true">
+          <i data-lucide="message-circle" class="w-5 h-5 text-black"></i>
+          <span class="font-primary font-bold text-sm">Hubungi Saya</span>
+        </div>
+        <button onclick="toggleWaChat()"
+          class="hover:bg-black hover:text-white border-2 border-transparent hover:border-black rounded p-0.5 transition-colors focus-visible:ring-2 focus-visible:ring-black focus-visible:outline-none"
+          aria-label="Tutup Obrolan"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <label for="wa-msg" class="sr-only">Tulis pesan Anda</label>
+      <textarea id="wa-msg" rows="3"
+        class="w-full border-2 border-black p-2 text-sm font-mono resize-none focus:outline-none focus:ring-2 focus:ring-black"
+        placeholder="Halo Rahmat, mari berdiskusi..."></textarea>
+      <button onclick="sendWa()"
+        class="neo-btn px-4 py-2 bg-black text-white hover:bg-white hover:text-black text-sm font-bold w-full flex justify-center items-center gap-2 focus-visible:ring-2 focus-visible:ring-black focus-visible:outline-none">
+        <i data-lucide="send" aria-hidden="true" class="w-4 h-4"></i> Kirim via WA
+      </button>
+    </div>
+
+    <!-- FAB Button -->
+    <button onclick="toggleWaChat()" aria-expanded="false" aria-controls="wa-chatbox"
+      class="neo-btn p-3 rounded-full bg-white text-black hover:bg-black hover:text-white flex items-center justify-center group focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 focus-visible:outline-none"
+      aria-label="Buka Chat WhatsApp">
+      <i data-lucide="message-circle" aria-hidden="true" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+    </button>
   </div>
 
   <!-- Script Utama -->
   <script>
+    // DATA TAUTAN: Social Media Diatas, Digital Universe Dibawah
     const linkData = [
-      {
-        section: "Portofolio & Works",
-        layout: "list",
-        items: [
-          { title: "Portofolio Website", url: "https://rahmathafiz.xyz/", icon: "globe", subtitle: "My digital playground" },
-          { title: "Upwork", url: "https://www.upwork.com/freelancers/~01d25e5013fac2bf3b", icon: "briefcase", subtitle: "Hire me for projects" }
-        ]
-      },
       {
         section: "Social Media",
         layout: "grid",
         items: [
-          { title: "Instagram", url: "https://www.instagram.com/rahmathafiz/", icon: "instagram", subtitle: "@rahmathafiz" },
-          { title: "Facebook", url: "#", icon: "facebook", subtitle: "Rahmat Hafiz" },
-          { title: "Threads", url: "#", icon: "at-sign", subtitle: "@rahmathafiz" },
-          { title: "X", url: "https://twitter.com/rahmathafiz", icon: "twitter", subtitle: "@rahmathafiz" },
-          { title: "TikTok", url: "#", icon: "music", subtitle: "@rahmathafiz" },
-          { title: "LinkedIn", url: "https://www.linkedin.com/in/rahmathafizj/", icon: "linkedin", subtitle: "Rahmat Hafiz J." }
+          {
+            title: "Instagram",
+            url: "https://www.instagram.com/rahmathafiz/",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`,
+            subtitle: "@rahmathafiz"
+          },
+          {
+            title: "Facebook",
+            url: "#",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+            subtitle: "Rahmat Hafiz"
+          },
+          {
+            title: "Threads",
+            url: "https://www.threads.net/@rahmathafiz",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M14.647 14.073c-.943 1.054-2.22 1.597-3.722 1.597-2.736 0-4.686-1.921-4.686-4.801 0-2.85 1.94-4.801 4.717-4.801 1.764 0 3.09.845 3.737 2.224.265.57.375 1.25.353 1.96H8.56c.15 1.481 1.22 2.38 2.502 2.38 1.05 0 1.795-.595 2.15-1.503l2.802 1.121c-.815 2.112-2.753 3.42-5.068 3.42-3.873 0-6.732-2.825-6.732-6.844 0-4.004 2.86-6.83 6.643-6.83 3.86 0 6.452 2.84 6.452 6.83v.975h-2.613v-.55c.01-.295 0-.585-.05-.884zm-3.486-3.784c-1.12-.02-2.02.73-2.181 1.91h4.298c-.13-1.15-1-1.89-2.117-1.91zM23.996 12c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-3.084 0c0-4.925-3.987-8.916-8.912-8.916-4.925 0-8.916 3.99-8.916 8.916 0 4.925 3.99 8.916 8.916 8.916 4.925 0 8.916-3.99 8.916-8.916zm-5.044 4.542c1.282-1.121 1.992-2.81 1.992-4.942v-.545c0-4.045-2.804-6.83-6.663-6.83-3.834 0-6.664 2.835-6.664 6.83 0 4.015 2.85 6.845 6.753 6.845 2.22 0 4.145-1.01 5.323-2.65l-2.316-1.547c-.772 1.055-1.921 1.547-3.097 1.547-1.637 0-3.05-.885-3.614-2.285h9.456c.03-.4.04-.805.04-1.22 0-2.64-1.35-4.48-3.794-4.48-2.424 0-4.085 1.77-4.085 4.5 0 2.74 1.67 4.51 4.105 4.51.983 0 1.834-.4 2.383-1.045l2.181 1.282z"/></svg>`,
+            subtitle: "@rahmathafiz"
+          },
+          {
+            title: "X",
+            url: "https://twitter.com/rahmathafiz",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>`,
+            subtitle: "@rahmathafiz"
+          },
+          {
+            title: "TikTok",
+            url: "https://www.tiktok.com/@rahmathafizj",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>`,
+            subtitle: "@rahmathafizj"
+          },
+          {
+            title: "LinkedIn",
+            url: "https://www.linkedin.com/in/rahmathafizj/",
+            customSvg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
+            subtitle: "Rahmat Hafiz Jayadiningrat"
+          }
+        ]
+      },
+      {
+        section: "Digital Universe",
+        layout: "grid-square",
+        items: [
+          { title: "Web Portofolio", url: "https://rahmathafiz.xyz/", icon: "terminal", subtitle: "My digital playground & codes" },
+          { title: "Business / Startup", url: "#", icon: "rocket", subtitle: "My entrepreneurial journey" },
+          {
+            title: "Aerial Footage",
+            url: "#",
+            icon: "drone",
+            customSvg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="w-5 h-5"><path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>`,
+            subtitle: "Cinematic drone shots"
+          }
         ]
       }
     ];
 
+    // Rendering HTML efisien
     function renderLinks() {
       const container = document.getElementById('links-container');
       let htmlContent = '';
@@ -267,16 +457,37 @@
             htmlContent += `
                             <div class="neo-card flex flex-col items-center justify-center p-3.5 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center"
                                style="animation-delay: ${animationDelay}s;">
-                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center z-10 w-full outline-none select-none">
+                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center z-10 w-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
                                     <div class="flex items-center justify-center w-10 h-10 mb-2 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
-                                        <i data-lucide="${link.icon}" class="w-5 h-5"></i>
+                                        ${link.customSvg ? link.customSvg : `<i data-lucide="${link.icon}" aria-hidden="true" class="w-5 h-5"></i>`}
                                     </div>
                                     <div class="pointer-events-none">
                                         <h3 class="text-[13px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
-                                        ${link.subtitle ? `<p class="text-gray-600 text-[9px] font-mono mt-1">${link.subtitle}</p>` : ''}
+                                        ${link.subtitle ? `<p class="text-gray-800 text-[11px] font-mono mt-1">${link.subtitle}</p>` : ''}
                                     </div>
                                 </a>
                                 <div class="absolute inset-0 bg-gray-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
+                            </div>
+                        `;
+          });
+          htmlContent += `</div>`;
+        } else if (category.layout === 'grid-square') {
+          htmlContent += `<div class="flex flex-wrap justify-center gap-3">`;
+          category.items.forEach((link) => {
+            animationDelay += 0.1;
+            htmlContent += `
+                            <div class="neo-card flex flex-col items-center justify-center p-3 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center w-[calc(50%-6px)] aspect-square"
+                               style="animation-delay: ${animationDelay}s;">
+                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center justify-center z-10 w-full h-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
+                                    <div class="flex items-center justify-center w-12 h-12 mb-3 rounded-lg border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
+                                        ${link.customSvg ? link.customSvg : `<i data-lucide="${link.icon}" aria-hidden="true" class="w-6 h-6"></i>`}
+                                    </div>
+                                    <div class="pointer-events-none px-1">
+                                        <h3 class="text-[14px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
+                                        ${link.subtitle ? `<p class="text-gray-800 text-[11px] font-mono mt-1.5 leading-tight">${link.subtitle}</p>` : ''}
+                                    </div>
+                                </a>
+                                <div class="absolute inset-0 bg-gray-100 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
                             </div>
                         `;
           });
@@ -288,16 +499,16 @@
             htmlContent += `
                             <div class="neo-card flex items-center p-2.5 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing"
                                style="animation-delay: ${animationDelay}s;">
-                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex items-center flex-1 z-10 w-full outline-none select-none">
+                                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex items-center flex-1 z-10 w-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
                                     <div class="flex items-center justify-center w-10 h-10 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
-                                        <i data-lucide="${link.icon}" class="w-5 h-5"></i>
+                                        ${link.customSvg ? link.customSvg : `<i data-lucide="${link.icon}" aria-hidden="true" class="w-5 h-5"></i>`}
                                     </div>
                                     <div class="flex-1 px-3 text-left pointer-events-none">
                                         <h3 class="text-[15px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
-                                        ${link.subtitle ? `<p class="text-gray-600 text-[10px] font-mono mt-0.5">${link.subtitle}</p>` : ''}
+                                        ${link.subtitle ? `<p class="text-gray-800 text-[11px] font-mono mt-0.5">${link.subtitle}</p>` : ''}
                                     </div>
                                     <div class="w-7 h-7 flex items-center justify-center border-2 border-transparent rounded-full group-hover:border-black group-hover:translate-x-1 group-hover:-rotate-45 transition-all duration-300 pointer-events-none">
-                                        <i data-lucide="arrow-right" class="w-4 h-4 text-black"></i>
+                                        <i data-lucide="arrow-right" aria-hidden="true" class="w-4 h-4 text-black"></i>
                                     </div>
                                 </a>
                                 <div class="absolute inset-0 bg-gray-100 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
@@ -311,23 +522,68 @@
       container.innerHTML = htmlContent;
     }
 
+    // Salin Tautan Langsung (Modern Clipboard API dengan Fallback Terbaik)
     function copyProfileLink() {
       const url = window.location.href;
-      const tempInput = document.createElement('textarea');
-      tempInput.value = url;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-
       const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => { toast.classList.remove('show'); }, 3000);
+      const showSuccessToast = () => {
+        document.getElementById('toast-text').innerText = "Tautan profil disalin!";
+        toast.classList.add('show');
+        setTimeout(() => { toast.classList.remove('show'); }, 3000);
+      };
+
+      // Menggunakan API Modern
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(showSuccessToast);
+      } else {
+        // Fallback untuk browser tua / tanpa HTTPS
+        const tempInput = document.createElement('textarea');
+        tempInput.value = url;
+        tempInput.style.position = 'absolute';
+        tempInput.style.left = '-9999px';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        try {
+          document.execCommand('copy');
+          showSuccessToast();
+        } catch (err) {
+          console.error('Gagal menyalin:', err);
+        }
+        document.body.removeChild(tempInput);
+      }
     }
 
-    function createParticles(x, y) {
+    // WA Toggle & Send
+    function toggleWaChat() {
+      const chatbox = document.getElementById('wa-chatbox');
+      const btn = document.querySelector('[aria-controls="wa-chatbox"]');
+      const isHidden = chatbox.classList.contains('hidden');
+
+      if (isHidden) {
+        chatbox.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        // Mengatur fokus ke textarea saat dibuka untuk aksesibilitas (A11y)
+        setTimeout(() => document.getElementById('wa-msg').focus(), 100);
+      } else {
+        chatbox.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    function sendWa() {
+      const msg = document.getElementById('wa-msg').value;
+      const phone = '6285365557009';
+      if (msg.trim() !== '') {
+        window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+        toggleWaChat();
+        document.getElementById('wa-msg').value = '';
+      }
+    }
+
+    // Partikel Efek (Hanya untuk memanjakan mata, non-blocking)
+    function createParticles(x, y, count = 10) {
       const colors = ['#000000', '#555555', '#cccccc'];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < count; i++) {
         const particle = document.createElement('div');
         particle.className = 'fixed pointer-events-none z-50';
         const size = Math.random() * 6 + 3;
@@ -355,14 +611,72 @@
       }
     }
 
+    // Desktop Interactive (Kursor & Dodge) - Berjalan dalam rAF untuk Performance
     if (window.matchMedia("(min-width: 768px)").matches) {
+      const cursorFollower = document.getElementById('cursor-follower');
+      const dodgeShapes = document.querySelectorAll('.dodge-shape');
+
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+
+      function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.2;
+        cursorY += (mouseY - cursorY) * 0.2;
+
+        if (cursorFollower) {
+          cursorFollower.style.left = cursorX + 'px';
+          cursorFollower.style.top = cursorY + 'px';
+        }
+        requestAnimationFrame(animateCursor);
+      }
+      requestAnimationFrame(animateCursor);
+
+      // Throttle ringan menggunakan pasif listeners
       document.addEventListener('mousemove', (e) => {
         const x = (e.clientX / window.innerWidth - 0.5) * 20;
         const y = (e.clientY / window.innerHeight - 0.5) * 20;
         document.body.style.backgroundPosition = `${x}px ${y}px`;
-      });
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        dodgeShapes.forEach(shape => {
+          const rect = shape.getBoundingClientRect();
+          const shapeCenterX = rect.left + rect.width / 2;
+          const shapeCenterY = rect.top + rect.height / 2;
+
+          const distX = e.clientX - shapeCenterX;
+          const distY = e.clientY - shapeCenterY;
+          const distance = Math.sqrt(distX * distX + distY * distY);
+
+          if (distance < 120) {
+            const force = (120 - distance) / 120;
+            const moveX = -(distX / distance) * force * 70;
+            const moveY = -(distY / distance) * force * 70;
+
+            shape.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${distance * 2}deg) scale(1.3)`;
+            shape.style.transition = 'transform 0.1s ease-out';
+          } else {
+            shape.style.transform = '';
+            shape.style.transition = 'transform 0.5s ease-out';
+          }
+        });
+      }, { passive: true });
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.neo-card') || e.target.closest('.neo-profile')) {
+          if (cursorFollower) cursorFollower.classList.add('hovering');
+        }
+      }, { passive: true });
+
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a') || e.target.closest('button') || e.target.closest('.neo-card') || e.target.closest('.neo-profile')) {
+          if (cursorFollower) cursorFollower.classList.remove('hovering');
+        }
+      }, { passive: true });
     }
 
+    // Drag Handler
     let isDragging = false;
     let dragCard = null;
     let startX = 0, startY = 0;
@@ -389,7 +703,6 @@
           startX = clientX;
           startY = clientY;
 
-          // Mengambil nilai koordinat langsung dari inline style agar lebih akurat
           const currentX = parseFloat(dragCard.style.getPropertyValue('--drag-x')) || 0;
           const currentY = parseFloat(dragCard.style.getPropertyValue('--drag-y')) || 0;
 
@@ -431,6 +744,10 @@
 
         dragCard.style.setProperty('--drag-x', `${newX}px`);
         dragCard.style.setProperty('--drag-y', `${newY}px`);
+
+        if (hasDragged && Math.random() > 0.85) {
+          createParticles(clientX, clientY + 15, 1);
+        }
       };
 
       const stopDrag = (e) => {
@@ -448,10 +765,10 @@
         dragCard = null;
       };
 
-      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mousemove', onDrag, { passive: false });
       document.addEventListener('touchmove', onDrag, { passive: false });
-      document.addEventListener('mouseup', stopDrag);
-      document.addEventListener('touchend', stopDrag);
+      document.addEventListener('mouseup', stopDrag, { passive: true });
+      document.addEventListener('touchend', stopDrag, { passive: true });
     }
 
     document.addEventListener('click', (e) => {
@@ -462,13 +779,13 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       renderLinks();
-      lucide.createIcons();
+
+      // Tunggu dom stabil lalu inisiasi icons
+      if (window.lucide) { lucide.createIcons(); }
 
       const animateItems = document.querySelectorAll('.animate-item');
       animateItems.forEach(item => {
         item.classList.add('animate-fade-in-up');
-
-        // Hapus animasi setelah selesai untuk membersihkan potensi interupsi transform
         item.addEventListener('animationend', () => {
           item.classList.remove('animate-fade-in-up', 'animate-item');
         });
@@ -476,14 +793,34 @@
 
       initFreeDrag();
 
-      // Efek Vanilla-Tilt akan tetap berjalan, tapi sekarang tidak lagi menimpa koordinat posisi geser
-      if (window.matchMedia("(min-width: 768px)").matches) {
+      // Eksekusi jika Vanilla Tilt sudah siap diakses & lebar layar > desktop
+      if (window.matchMedia("(min-width: 768px)").matches && typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(document.querySelectorAll(".neo-card"), {
           max: 5,
           speed: 400,
           glare: true,
           "max-glare": 0.1,
           scale: 1.02
+        });
+      }
+
+      if (window.DeviceOrientationEvent && !window.matchMedia("(min-width: 768px)").matches) {
+        window.addEventListener('deviceorientation', (e) => {
+          if (e.beta === null || e.gamma === null) return;
+
+          let gamma = Math.max(-45, Math.min(45, e.gamma));
+          let beta = Math.max(-45, Math.min(45, e.beta));
+
+          const x = (gamma / 45) * 25;
+          const y = (beta / 45) * 25;
+
+          document.body.style.backgroundPosition = `${x}px ${y}px`;
+
+          const dodgeShapes = document.querySelectorAll('.dodge-shape');
+          dodgeShapes.forEach((shape, index) => {
+            const depth = (index + 1) * 0.4;
+            shape.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+          });
         });
       }
     });
