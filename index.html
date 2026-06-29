@@ -3,15 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ffffff">
 
   <!-- === PRECONNECT & PERFORMANCE OPTIMIZATION === -->
+  <link rel="apple-touch-icon" href="assets/profil.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-
   <!-- === SEO & META TAGS === -->
   <title>Rahmat Hafiz J. | Links</title>
 
@@ -20,25 +18,28 @@
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='10' y='10' width='80' height='80' fill='%23ffffff' stroke='%23000000' stroke-width='10'/%3E%3Ctext x='50' y='66' font-family='sans-serif' font-size='38' font-weight='bold' fill='%23000000' text-anchor='middle' letter-spacing='-1'%3ERHJ%3C/text%3E%3C/svg%3E">
 
   <meta name="description"
-    content="Kumpulan tautan sosial dan portofolio Rahmat Hafiz J., seorang Technopreneur (Stelaris Agency) dan Drone Pilot (FPV & Aerial). Mari terhubung!">
+    content="Social Links Rahmat Hafiz J. - Technopreneur, Founder STELARIS (Media Agency), SKYGRAPH (Drone Service), dan SATUMEJA (Legal Services) di Indonesia.">
   <meta name="keywords"
-    content="Rahmat Hafiz, Technopreneur, Stelaris Agency, Drone Pilot, FPV, Aerial Mapping, Web Agency, Portofolio, Linktree">
+    content="Rahmat Hafiz, Technopreneur, STELARIS, SKYGRAPH, SATUMEJA, Drone Service, Media Agency, Legal Service, Social Links, Linktree">
   <meta name="author" content="Rahmat Hafiz J.">
   <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="ID">
+  <meta name="geo.placename" content="Indonesia">
   <link rel="canonical" href="https://rahmathafiz.github.io/">
 
   <!-- OpenGraph Tags -->
   <meta property="og:type" content="profile">
   <meta property="og:title" content="Rahmat Hafiz J. | Links">
   <meta property="og:description"
-    content="Technopreneur di balik Stelaris Agency & Drone Pilot profesional. Lihat portofolio dan mari terhubung!">
+    content="Social Links Rahmat Hafiz J. - Technopreneur di balik STELARIS, SKYGRAPH, & SATUMEJA. Mari terhubung!">
   <meta property="og:url" content="https://rahmathafiz.github.io/">
   <meta property="og:image" content="assets/profil.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Rahmat Hafiz J. | Links">
-  <meta name="twitter:description" content="Technopreneur di balik Stelaris Agency & Drone Pilot profesional.">
+  <meta name="twitter:description"
+    content="Social Links Rahmat Hafiz J. - Technopreneur di balik STELARIS, SKYGRAPH, & SATUMEJA.">
   <meta name="twitter:image" content="assets/profil.jpg">
 
   <!-- Schema Markup JSON-LD -->
@@ -51,14 +52,36 @@
         "name": "Rahmat Hafiz J.",
         "jobTitle": "Technopreneur & Drone Pilot",
         "url": "https://rahmathafiz.github.io/",
+        "knowsAbout": [
+          "Media Agency",
+          "Drone Services",
+          "Business Legality",
+          "Technopreneurship",
+          "Aerial Mapping"
+        ],
         "sameAs": [
           "https://www.instagram.com/rahmathafiz/",
           "https://twitter.com/rahmathafiz",
           "https://www.linkedin.com/in/rahmathafizj/",
           "https://www.tiktok.com/@rahmathafizj",
-          "https://www.threads.net/@rahmathafiz"
+          "https://www.threads.net/@rahmathafiz",
+          "https://web.facebook.com/rahmathafizj/"
         ],
-        "image": "assets/profil.jpg"
+        "image": "https://rahmathafiz.github.io/assets/profil.jpg",
+        "worksFor": [
+          {
+            "@type": "Organization",
+            "name": "STELARIS"
+          },
+          {
+            "@type": "Organization",
+            "name": "SKYGRAPH"
+          },
+          {
+            "@type": "Organization",
+            "name": "SATUMEJA"
+          }
+        ]
       }
     }
     </script>
@@ -69,36 +92,11 @@
     href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&family=Lato:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
     rel="stylesheet">
 
-  <!-- Tailwind CSS -->
-  <!-- Catatan Produksi: Ganti CDN ini dengan file CSS yang sudah dikompilasi (build) agar loading 10x lipat lebih cepat. -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Compiled Tailwind CSS (Produksi) -->
+  <link rel="stylesheet" href="style.css">
 
   <!-- Vanilla Tilt (Deferred) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
-
-  <!-- Konfigurasi Tailwind Kustom -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            primary: ['"Josefin Sans"', 'sans-serif'],
-            body: ['Lato', 'sans-serif'],
-            mono: ['"Space Mono"', 'monospace'],
-          },
-          animation: {
-            'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-          },
-          keyframes: {
-            fadeInUp: {
-              '0%': { opacity: '0', transform: 'translateY(40px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <script src="vanilla-tilt.min.js" defer></script>
 
   <style>
     body {
@@ -167,24 +165,13 @@
       box-shadow: 0px 0px 0px #000000;
     }
 
-    .floating-shape {
-      position: absolute;
+    .dodge-shape {
+      position: fixed;
       border: 2px solid #000000;
       pointer-events: none;
       z-index: -1;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-20px) rotate(15deg);
-      }
+      transition: translate 2s linear, rotate 2s linear;
+      will-change: translate, rotate;
     }
 
     /* Custom Cursor Follower */
@@ -275,12 +262,20 @@
   <div class="cursor-box hidden md:block" id="cursor-follower" aria-hidden="true"></div>
 
   <!-- Dekorasi Background Melayang -->
-  <div class="floating-shape dodge-shape bg-white" aria-hidden="true"
-    style="width: 50px; height: 50px; top: 12%; left: 8%; border-radius: 12px;"></div>
-  <div class="floating-shape dodge-shape bg-black" aria-hidden="true"
-    style="width: 25px; height: 25px; top: 55%; right: 10%; border-radius: 50%; animation-delay: -2s;"></div>
-  <div class="floating-shape dodge-shape bg-white" aria-hidden="true"
-    style="width: 35px; height: 35px; top: 75%; left: 6%; transform: rotate(45deg); animation-delay: -4s;"></div>
+  <div class="dodge-shape bg-white" aria-hidden="true"
+    style="width: 50px; height: 50px; top: 20%; left: 15%; border-radius: 12px;"></div>
+  <div class="dodge-shape bg-black" aria-hidden="true"
+    style="width: 25px; height: 25px; top: 65%; right: 15%; border-radius: 50%;"></div>
+  <div class="dodge-shape bg-white" aria-hidden="true"
+    style="width: 35px; height: 35px; top: 40%; left: 75%; rotate: 45deg;"></div>
+  <div class="dodge-shape bg-black" aria-hidden="true"
+    style="width: 15px; height: 15px; top: 10%; right: 30%; rotate: 15deg;"></div>
+  <div class="dodge-shape bg-white" aria-hidden="true"
+    style="width: 40px; height: 40px; top: 80%; left: 20%; border-radius: 8px;"></div>
+  <div class="dodge-shape bg-black" aria-hidden="true"
+    style="width: 30px; height: 30px; top: 50%; left: 10%; border-radius: 50%;"></div>
+  <div class="dodge-shape bg-white" aria-hidden="true"
+    style="width: 20px; height: 20px; top: 75%; right: 40%; rotate: 60deg;"></div>
 
   <!-- Tombol Share -->
   <button onclick="copyProfileLink()"
@@ -296,30 +291,32 @@
     </svg>
   </button>
 
-  <main class="w-full max-w-sm mx-auto pt-14 px-4 relative z-0">
+  <main role="main" class="w-full max-w-sm mx-auto pt-6 px-4 relative z-0 flex flex-col justify-center"
+    style="min-height: calc(100vh - 60px);">
 
     <!-- Header Profil -->
-    <header class="flex flex-col items-center text-center mb-8 animate-item" style="animation-delay: 0.1s;">
-      <div class="relative mb-6 cursor-pointer group" aria-label="Avatar Rahmat Hafiz J.">
+    <header class="flex flex-col items-center text-center mb-5 animate-item" style="animation-delay: 0.1s;">
+      <div class="relative mb-4 cursor-pointer group" aria-label="Avatar Rahmat Hafiz J.">
         <div
-          class="w-28 h-28 flex items-center justify-center bg-white border-[3px] border-black shadow-[8px_8px_0px_0px_#000] group-hover:shadow-[0px_0px_0px_0px_#000] group-hover:translate-x-[8px] group-hover:translate-y-[8px] transition-all duration-200 ease-out relative overflow-hidden">
+          class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-white border-[3px] border-black shadow-[6px_6px_0px_0px_#000] group-hover:shadow-[0px_0px_0px_0px_#000] group-hover:translate-x-[6px] group-hover:translate-y-[6px] transition-all duration-200 ease-out relative overflow-hidden">
           <div
             class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"
             style="background-image: repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 2px, transparent 8px);">
           </div>
-          <div class="font-primary font-bold text-5xl text-black z-10 flex items-end tracking-tighter">
-            RHJ<span class="animate-pulse text-4xl mb-1 ml-0.5">_</span>
+          <div class="font-primary font-bold text-4xl md:text-5xl text-black z-10 flex items-end tracking-tighter">
+            RHJ<span class="animate-pulse text-3xl md:text-4xl mb-1 ml-0.5">_</span>
           </div>
         </div>
         <div
-          class="absolute -top-3 -right-4 bg-black text-white text-[10px] font-mono font-bold px-2 py-0.5 border-2 border-white transform rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 pointer-events-none shadow-sm">
+          class="absolute -top-2 -right-3 bg-black text-white text-[9px] md:text-[10px] font-mono font-bold px-1.5 py-0.5 border-2 border-white transform rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-300 pointer-events-none shadow-sm">
           SYS.ONLINE
         </div>
       </div>
 
-      <h1 class="text-2xl font-primary font-bold tracking-tight mb-1.5 glitch-hover cursor-help">Rahmat Hafiz J.</h1>
+      <h1 class="text-xl md:text-2xl font-primary font-bold tracking-tight mb-1 glitch-hover cursor-help">Rahmat Hafiz
+        J.</h1>
 
-      <div class="flex flex-wrap justify-center gap-2 mt-2" aria-label="Keahlian">
+      <div class="flex flex-wrap justify-center gap-1.5 mt-1" aria-label="Keahlian">
         <span
           class="font-mono text-[11px] font-bold tracking-widest uppercase border-2 border-black bg-black text-white px-2 py-0.5 shadow-[2px_2px_0px_#ccc] skew-x-6 hover:-translate-y-1 transition-transform cursor-default">Technopreneur</span>
         <span
@@ -329,7 +326,7 @@
     </header>
 
     <!-- Container Tautan -->
-    <nav id="links-container" class="flex flex-col gap-6" aria-label="Tautan Utama"></nav>
+    <nav id="links-container" class="flex flex-col gap-4" aria-label="Tautan Utama"></nav>
   </main>
 
   <!-- Elemen Toast -->
@@ -349,13 +346,14 @@
     const ICON_LIBRARY = {
       instagram: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`,
       facebook: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
-      threads: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M14.647 14.073c-.943 1.054-2.22 1.597-3.722 1.597-2.736 0-4.686-1.921-4.686-4.801 0-2.85 1.94-4.801 4.717-4.801 1.764 0 3.09.845 3.737 2.224.265.57.375 1.25.353 1.96H8.56c.15 1.481 1.22 2.38 2.502 2.38 1.05 0 1.795-.595 2.15-1.503l2.802 1.121c-.815 2.112-2.753 3.42-5.068 3.42-3.873 0-6.732-2.825-6.732-6.844 0-4.004 2.86-6.83 6.643-6.83 3.86 0 6.452 2.84 6.452 6.83v.975h-2.613v-.55c.01-.295 0-.585-.05-.884zm-3.486-3.784c-1.12-.02-2.02.73-2.181 1.91h4.298c-.13-1.15-1-1.89-2.117-1.91zM23.996 12c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-3.084 0c0-4.925-3.987-8.916-8.912-8.916-4.925 0-8.916 3.99-8.916 8.916 0 4.925 3.99 8.916 8.916 8.916 4.925 0 8.916-3.99 8.916-8.916zm-5.044 4.542c1.282-1.121 1.992-2.81 1.992-4.942v-.545c0-4.045-2.804-6.83-6.663-6.83-3.834 0-6.664 2.835-6.664 6.83 0 4.015 2.85 6.845 6.753 6.845 2.22 0 4.145-1.01 5.323-2.65l-2.316-1.547c-.772 1.055-1.921 1.547-3.097 1.547-1.637 0-3.05-.885-3.614-2.285h9.456c.03-.4.04-.805.04-1.22 0-2.64-1.35-4.48-3.794-4.48-2.424 0-4.085 1.77-4.085 4.5 0 2.74 1.67 4.51 4.105 4.51.983 0 1.834-.4 2.383-1.045l2.181 1.282z"/></svg>`,
+      threads: `<svg viewBox="0 0 192 192" fill="currentColor" class="w-5 h-5"><path d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.561 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96V92C29.8077 67.318 35.2355 48.0341 45.7381 34.6828C56.9538 20.4247 74.2039 13.11 97.0132 12.9406C119.829 13.11 137.071 20.4247 148.28 34.6828C154.672 42.8223 159.208 53.0763 161.787 64.9386L178.291 61.3414C175.253 47.4529 169.932 35.452 162.261 25.6881C148.749 8.52845 127.355 1.0507 97.0135 1C66.657 1.05067 45.249 8.52824 31.724 25.688C18.995 41.8385 12.5186 64.0811 12.285 92v4C12.5186 119.919 18.995 142.162 31.724 158.312C45.249 175.472 66.657 182.949 97.0135 183C122.951 182.809 141.047 176.452 154.512 163.024C170.89 146.689 171.726 125.755 166.49 113.61C160.835 100.485 150.941 93.3087 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/></svg>`,
       x: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>`,
       tiktok: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>`,
       linkedin: `<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`,
       drone: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m4.93 19.07 1.41-1.41"/><path d="m17.66 6.34 1.41-1.41"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>`,
-      rocket: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>`,
-      camera: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>`
+      megaphone: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>`,
+      camera: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>`,
+      briefcase: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`
     };
 
     // Data Link Sederhana
@@ -364,8 +362,9 @@
         section: "Professional Service",
         layout: "grid",
         items: [
-          { title: "STELARIS.ID", url: "https://stelaris.id", iconKey: "rocket", subtitle: "Media Agency" },
-          { title: "SKYGRAPH.ID", url: "#", iconKey: "camera", subtitle: "Drone Service" }
+          { title: "STELARIS", url: "https://stelaris.id", iconKey: "megaphone", subtitle: "Media Agency" },
+          { title: "SKYGRAPH", url: "https://skygraph.web.id", iconKey: "camera", subtitle: "Drone Service" },
+          { title: "SATUMEJA", url: "#", iconKey: "briefcase", subtitle: "Legal Services" }
         ]
       },
       {
@@ -390,28 +389,31 @@
       linkData.forEach((category) => {
         htmlContent += `
           <section class="animate-item relative" style="animation-delay: ${animationDelay}s;">
-              <h2 class="mb-3.5 text-center text-sm font-primary font-bold tracking-[0.2em] uppercase">
-                  <span class="bg-white px-3 border-2 border-black inline-block py-0.5 shadow-[3px_3px_0px_#000] -skew-x-6">
+              <h2 class="mb-2.5 text-center text-[11px] sm:text-xs font-primary font-bold tracking-[0.15em] uppercase">
+                  <span class="bg-white px-2.5 border-2 border-black inline-block py-0.5 shadow-[2px_2px_0px_#000] -skew-x-6">
                       ${category.section}
                   </span>
               </h2>
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-2 gap-2.5">
         `;
 
-        category.items.forEach((link) => {
+        category.items.forEach((link, index) => {
           animationDelay += 0.1;
           const iconHtml = ICON_LIBRARY[link.iconKey];
 
+          const isOddLast = category.items.length % 2 !== 0 && index === category.items.length - 1;
+          const spanClass = isOddLast ? 'col-span-2 w-[calc(50%-5px)] justify-self-center' : '';
+
           htmlContent += `
-            <div class="neo-card flex flex-col items-center justify-center p-3.5 rounded-lg group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center relative"
+            <div class="neo-card flex flex-col items-center justify-center p-2.5 rounded-md group overflow-hidden bg-white cursor-grab active:cursor-grabbing text-center relative ${spanClass}"
                style="animation-delay: ${animationDelay}s;">
-                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} class="flex flex-col items-center z-10 w-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
-                    <div class="flex items-center justify-center w-10 h-10 mb-2 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
+                <a href="${link.url}" ${link.url !== '#' ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="${link.title} - ${link.subtitle}" class="flex flex-col items-center z-10 w-full outline-none select-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded-md">
+                    <div class="flex items-center justify-center w-8 h-8 mb-1.5 rounded-md border-2 border-black bg-white group-hover:bg-black group-hover:text-white transition-colors duration-300 pointer-events-none">
                         ${iconHtml}
                     </div>
-                    <div class="pointer-events-none">
-                        <h3 class="text-[13px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight">${link.title}</h3>
-                        ${link.subtitle ? `<p class="text-gray-800 text-[11px] font-mono mt-1">${link.subtitle}</p>` : ''}
+                    <div class="pointer-events-none w-full px-1">
+                        <h3 class="text-[11px] sm:text-[12px] font-primary font-bold text-black group-hover:tracking-wide transition-all duration-300 leading-tight truncate">${link.title}</h3>
+                        ${link.subtitle ? `<p class="text-gray-800 text-[9px] sm:text-[10px] font-mono mt-0.5 truncate">${link.subtitle}</p>` : ''}
                     </div>
                 </a>
                 <div class="absolute inset-0 bg-gray-100 -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0 pointer-events-none"></div>
@@ -432,17 +434,8 @@
         setTimeout(() => { toast.classList.remove('show'); }, 3000);
       };
 
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(url).then(showSuccessToast);
-      } else {
-        const tempInput = document.createElement('textarea');
-        tempInput.value = url;
-        tempInput.style.position = 'absolute';
-        tempInput.style.left = '-9999px';
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        try { document.execCommand('copy'); showSuccessToast(); } catch (err) { }
-        document.body.removeChild(tempInput);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(showSuccessToast).catch(() => { });
       }
     }
 
@@ -506,27 +499,6 @@
             const x = (mouseX / window.innerWidth - 0.5) * 20;
             const y = (mouseY / window.innerHeight - 0.5) * 20;
             document.body.style.backgroundPosition = `${x}px ${y}px`;
-
-            dodgeShapes.forEach(shape => {
-              const rect = shape.getBoundingClientRect();
-              const shapeCenterX = rect.left + rect.width / 2;
-              const shapeCenterY = rect.top + rect.height / 2;
-
-              const distX = mouseX - shapeCenterX;
-              const distY = mouseY - shapeCenterY;
-              const distance = Math.sqrt(distX * distX + distY * distY);
-
-              if (distance < 120) {
-                const force = (120 - distance) / 120;
-                const moveX = -(distX / distance) * force * 70;
-                const moveY = -(distY / distance) * force * 70;
-                shape.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${distance * 2}deg) scale(1.3)`;
-                shape.style.transition = 'transform 0.1s ease-out';
-              } else {
-                shape.style.transform = '';
-                shape.style.transition = 'transform 0.5s ease-out';
-              }
-            });
             isTicking = false;
           });
           isTicking = true;
@@ -605,7 +577,6 @@
 
         if (Math.abs(dx) > dragThreshold || Math.abs(dy) > dragThreshold) {
           hasDragged = true;
-          e.preventDefault();
         }
 
         const newX = initialDragX + dx;
@@ -634,8 +605,8 @@
         dragCard = null;
       };
 
-      document.addEventListener('mousemove', onDrag, { passive: false });
-      document.addEventListener('touchmove', onDrag, { passive: false });
+      document.addEventListener('mousemove', onDrag, { passive: true });
+      document.addEventListener('touchmove', onDrag, { passive: true });
       document.addEventListener('mouseup', stopDrag, { passive: true });
       document.addEventListener('touchend', stopDrag, { passive: true });
     }
@@ -646,8 +617,20 @@
       }
     });
 
+    function animateRandomShapes() {
+      const shapes = document.querySelectorAll('.dodge-shape');
+      shapes.forEach(shape => {
+        const tx = (Math.random() - 0.5) * 120;
+        const ty = (Math.random() - 0.5) * 120;
+        shape.style.translate = `${tx}vw ${ty}vh`;
+        shape.style.rotate = `${Math.random() * 720}deg`;
+      });
+      setTimeout(animateRandomShapes, 2000);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       renderLinks();
+      setTimeout(animateRandomShapes, 100);
 
       const animateItems = document.querySelectorAll('.animate-item');
       animateItems.forEach(item => {
@@ -679,12 +662,6 @@
           const y = (beta / 45) * 25;
 
           document.body.style.backgroundPosition = `${x}px ${y}px`;
-
-          const dodgeShapes = document.querySelectorAll('.dodge-shape');
-          dodgeShapes.forEach((shape, index) => {
-            const depth = (index + 1) * 0.4;
-            shape.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
-          });
         });
       }
     });
